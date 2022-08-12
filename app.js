@@ -2,16 +2,23 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var logger = require( 'morgan' );
+var nunjucks = require( 'nunjucks' );
+const { sequelize } = require('./db')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
+nunjucks.configure('views', {
+  autoescape:  true,
+  express: app,
+  noCache: process.env.NODE_ENV === 'production'
+} )
+  
+app.locals.db = sequelize
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'njk');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,8 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use( '/',require( './features/home/routes' ) );
+app.use( '/users',require( './features/users/routes' ) );
+app.use('/requests', require('./features/requests/routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
