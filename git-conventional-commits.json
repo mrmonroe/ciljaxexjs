@@ -36,8 +36,8 @@
       "breakingChange": "BREAKING CHANGES"
     },
 
-    "commitUrl": "https://github.com/ACCOUNT/REPOSITORY/commit/%commit%",
-    "commitRangeUrl": "https://github.com/ACCOUNT/REPOSITORY/compare/%from%...%to%?diff=split",
-    "issueUrl": "https://github.com/ACCOUNT/REPOSITORY/issues/%issue%"
+    "commitUrl": "https://github.com/mrmonroe/ciljaxexjs/commit/%commit%",
+    "commitRangeUrl": "https://github.com/mrmonroe/ciljaxexjs/compare/%from%...%to%?diff=split",
+    "issueUrl": "https://github.com/mrmonroe/ciljaxexjs/issues/%issue%"
   }
 }
