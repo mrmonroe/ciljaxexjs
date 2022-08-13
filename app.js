@@ -1,11 +1,11 @@
-var createError = require('http-errors');
+require('dotenv').config()
+var createError = require( 'http-errors' );
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+var cookieParser = require( 'cookie-parser' );
 var logger = require( 'morgan' );
 var nunjucks = require( 'nunjucks' );
-const { sequelize } = require('./db')
-
+const { sequelize } = require( './db' )
 
 var app = express();
 nunjucks.configure('views', {
@@ -23,11 +23,10 @@ app.set('view engine', 'njk');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use( cookieParser( process.env.SECURECOOKIE ) );
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use( '/',require( './features/home/routes' ) );
-app.use( '/users',require( './features/users/routes' ) );
+app.use( '/', require( './features/home/routes' ) );
+app.use( '/users', require( './features/users/routes' ) );
 app.use('/requests', require('./features/requests/routes'));
 
 // catch 404 and forward to error handler

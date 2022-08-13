@@ -1,4 +1,3 @@
 #!/usr/bin/env node
 
-require('../features/requests/model')
-
+require('../features/requests/model').RequestSync()

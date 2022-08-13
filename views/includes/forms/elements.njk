@@ -1,0 +1,16 @@
+{% macro input(name, label='', type='text', classes='', placeholder='', helptext='', value='') %}
+
+<div class="field {{classes}}">
+
+    <div class="control">
+        <label class="label">
+        {{label}}
+        <input type="{{type}}" name="{{name}}" class="input is-small" placeholder="{{placeholder}}" value="{{value}}"/>
+        </label>
+        </div>
+        <p class="help">
+            {{helptext}}
+        </p>
+    </div>
+    
+{% endmacro %}

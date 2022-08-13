@@ -6,7 +6,7 @@ router.get( '/new',function( req,res,next ) {
     
     let  data = {
         message: 'Hello world!',
-        layout:  '../../views/includes/layout.njk',
+        layout:  'layout.njk',
         title: 'Nunjucks example'
       }
   res.render('requests/new', data);
