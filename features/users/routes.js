@@ -2,8 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const login = router.get('/', (req, res, next) => {
+  let data = {
+    message: 'Login',
+    layout: 'unauth.njk',
+    title: 'Login'
+  };
+  res.render('auth/login', data);
 });
 
-module.exports = router;
+module.exports = { login };

@@ -1,0 +1,30 @@
+{% extends '../includes/' + layout %}
+
+{% block content %}
+
+    <div class="field">
+        <div class="control">
+            <label class="label">
+                Email
+                <input type="email" id="email" class="input is-small" placeholder="john@gmail.com"/>
+            </label>
+        </div>
+        <p class="help">
+            Type your email address.
+        </p>
+    </div>
+    <div class="field">
+        <div class="control">
+            <label class="label">
+                Password
+                <input type="password" id="password" class="input is-small" placeholder="john@gmail.com"/>
+            </label>
+        </div>
+        <p class="help">
+            Type your email address.
+        </p>
+        <div class="buttons">
+            <button class="button is-primary loginSubmit">Primary</button>
+        </div>
+    </div>
+{% endblock %}

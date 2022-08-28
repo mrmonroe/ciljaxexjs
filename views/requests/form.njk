@@ -1,42 +1,163 @@
 {% import "../includes/forms/elements.njk" as elements %}
-{% set requestForm  = [
-["firstInfo", "clientName", "text","Client Name", "John Smith", "Enter the name of person recieving services." ],     
-["secondInfo", "sAddr","text", "Address", "123 Main Street", "Enter the street address where service is to be provided."],         
-["secondInfo", "sAddrAlt", "text", "Unit/Bldg/Apt#", "Bldg# 3", "If applicable."],      
-["secondInfo", "sZip", "text", "Zip Code", "32222", "Zip Code where service is to be provided.", "32222"],
-["secondInfo","sState","text","State","Fl","State where service is to be provided.", "Fl"],        
-["secondInfo", "sCity","text","City","Jacksonville","City where service is to be provided.", "Jacksonville"],         
-["firstInfo", "sDateTimes","text","Date and Time","MM/DD/YYYY HH:MM AM/PM","Date and time of service."],    
-["firstInfo", "bizName","text","Location Name","Acme Inc.","Name of location where service is to be provided."],     
-["thirdInfo","bcName","text","Billing Contact","Jane Williams","Name of person responsible for billing."],        
-["thirdInfo","bcEmail", "email", "Billing Email", "john.smith@acme.com", "Email of person responsible for billing."],      
-["thirdInfo","bcPhone","text","Billing Phone","904-555-5555","Phone # of person responsible for billing."],       
-["adminInfo","jobType","text","Job Type","",""],       
-["adminInfo","jobTier","number","Job Tier","","", "1"],       
-["adminInfo","numClients","number","# of Clients","","", "1"], 
-["adminInfo","numTerpsNeeded","number","# of Interpreters Needed","","", "1"]
- ] %}        
+{% set requestForm = [
+    [
+        "firstInfo",
+        "clientName",
+        "text",
+        "Client Name",
+        "John Smith",
+        "Enter the name of person recieving services."
+    ],
+    [
+        "secondInfo",
+        "sAddr",
+        "text",
+        "Address",
+        "123 Main Street",
+        "Enter the street address where service is to be provided."
+    ],
+    [
+        "secondInfo",
+        "sAddrAlt",
+        "text",
+        "Unit/Bldg/Apt#",
+        "Bldg# 3",
+        "If applicable."
+    ],
+    [
+        "secondInfo",
+        "sZip",
+        "text",
+        "Zip Code",
+        "32222",
+        "Zip Code where service is to be provided.",
+        "32222"
+    ],
+    [
+        "secondInfo",
+        "sState",
+        "text",
+        "State",
+        "Fl",
+        "State where service is to be provided.",
+        "Fl"
+    ],
+    [
+        "secondInfo",
+        "sCity",
+        "text",
+        "City",
+        "Jacksonville",
+        "City where service is to be provided.",
+        "Jacksonville"
+    ],
+    [
+        "firstInfo",
+        "sDateTimes",
+        "text",
+        "Date and Time",
+        "MM/DD/YYYY HH:MM AM/PM",
+        "Date and time of service."
+    ],
+    [
+        "firstInfo",
+        "bizName",
+        "text",
+        "Location Name",
+        "Acme Inc.",
+        "Name of location where service is to be provided."
+    ],
+    [
+        "thirdInfo",
+        "bcName",
+        "text",
+        "Billing Contact",
+        "Jane Williams",
+        "Name of person responsible for billing."
+    ],
+    [
+        "thirdInfo",
+        "bcEmail",
+        "email",
+        "Billing Email",
+        "john.smith@acme.com",
+        "Email of person responsible for billing."
+    ],
+    [
+        "thirdInfo",
+        "bcPhone",
+        "text",
+        "Billing Phone",
+        "904-555-5555",
+        "Phone # of person responsible for billing."
+    ],
+    [
+        "adminInfo",
+        "jobType",
+        "text",
+        "Job Type",
+        "",
+        ""
+    ],
+    [
+        "adminInfo",
+        "jobTier",
+        "number",
+        "Job Tier",
+        "",
+        "",
+        "1"
+    ],
+    [
+        "adminInfo",
+        "numClients",
+        "number",
+        "# of Clients",
+        "",
+        "",
+        "1"
+    ],
+    [
+        "adminInfo",
+        "numTerpsNeeded",
+        "number",
+        "# of Interpreters Needed",
+        "",
+        "",
+        "1"
+    ]
+] %}
 <div class="container center">
-<div class="column is-two-fifths">
-{% for sec, name, tp, lbl, ph, ht, def in requestForm %}
+    <div  class="column is-two-fifths">
+        <form id="newRequestForm" action="/api/v1/requests/new" method="post">
 
-{{elements.input(name, type=tp, label=lbl, placeholder=ph, helptext=ht, classes=sec, value=def)}}
+            {% for sec, name,
+            tp,
+            lbl,
+            ph,
+            ht,
+            def in requestForm %}
 
-{% endfor %}
+                {{elements.input(name, type=tp, label=lbl, placeholder=ph, helptext=ht, classes=sec, value=def)}}
 
+            {% endfor %}
+            <div class="buttons">
+                <input type="submit" class="button is-primary" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</div>
+<!--
 <div class="buttons firstInfo">
-     <button class="button is-warning">Clear</button>
-    <button class="button is-danger">Back</button>
-<button class="button is-success">Next</button>
+     <button class="button is-warning" >Clear</button>
+    <button class="button is-danger" >Back</button>
+<button class="button is-success" >Next</button>
 
 </div>
 <div class="buttons secondInfo">
-    <button class="button is-warning">Clear</button>
-    <button class="button is-danger">Back</button>
-<button class="button is-success">Next</button>
+     <button class="button is-warning" >Clear</button>
+    <button class="button is-danger" >Back</button>
+<button class="button is-success" >Next</button>
 
 </div>
-
-
-</div>
-</div>
+-->
